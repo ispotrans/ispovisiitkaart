@@ -36,7 +36,7 @@
       margin-bottom: 0.2em;
     }
 
-    /* Tähe-animatsioon */
+    /* Tähe-animatsioon ISPO */
     .letter {
       display: inline-block;
       opacity: 0;
@@ -48,15 +48,24 @@
       to { opacity: 1; transform: scale(1) translateY(0); }
     }
 
-    /* Kogu sõna korraga fade-in */
+    /* TRANSPORT fade-in korraga */
     .fade-word {
       opacity: 0;
       transform: scale(0.9) translateY(10px);
       animation: fadeScaleIn 0.8s forwards;
     }
 
-    .iso { font-size: clamp(3rem, 10vw, 4.5rem); letter-spacing: 0.1em; }
-    .transport { font-size: clamp(1.2rem, 5vw, 1.5rem); letter-spacing: 0.08em; margin-bottom: 1rem; }
+    /* -------------------- Joondatud read -------------------- */
+    .iso {
+      font-size: clamp(3rem, 10vw, 4.5rem);
+      letter-spacing: 0.35em; /* ISPO laiendatud, et tunduks TRANSPORTiga joondatud */
+    }
+
+    .transport {
+      font-size: clamp(1.2rem, 5vw, 1.5rem);
+      letter-spacing: 0.08em;
+      margin-bottom: 1rem;
+    }
 
     footer {
       display: flex;
@@ -79,13 +88,15 @@
     footer a:hover { color: #ddd; transform: translateY(-2px); }
 
     @media (max-width: 480px) {
-      .iso { font-size: clamp(2.2rem, 12vw, 3.2rem); }
+      .iso { font-size: clamp(2.2rem, 12vw, 3.2rem); letter-spacing: 0.25em; }
       .transport { font-size: clamp(1rem, 6vw, 1.2rem); }
     }
+
   </style>
 </head>
 <body>
   <main class="card">
+    <!-- ISPO tähehaaval animatsioon -->
     <h1 class="iso">
       <span class="letter" style="animation-delay:0s">I</span>
       <span class="letter" style="animation-delay:0.2s">S</span>
@@ -93,6 +104,7 @@
       <span class="letter" style="animation-delay:0.6s">O</span>
     </h1>
 
+    <!-- TRANSPORT korraga, joondatud laiusega -->
     <h1 class="transport fade-word" style="animation-delay:1s">
       TRANSPORT
     </h1>
