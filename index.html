@@ -16,7 +16,7 @@
       font-family: 'Poppins', sans-serif;
       color: #fff;
       text-align: center;
-      overflow-x: hidden; /* ära lase horisontaalselt kerida */
+      overflow-x: hidden;
     }
 
     .card {
@@ -30,12 +30,13 @@
     h1 {
       display: flex;
       justify-content: center;
-      white-space: nowrap; /* ära murra tähti uuele reale */
+      white-space: nowrap;
       line-height: 1;
       font-weight: 900;
       margin-bottom: 0.2em;
     }
 
+    /* Tähe-animatsioon */
     .letter {
       display: inline-block;
       opacity: 0;
@@ -45,6 +46,13 @@
 
     @keyframes fadeScaleIn {
       to { opacity: 1; transform: scale(1) translateY(0); }
+    }
+
+    /* Kogu sõna korraga fade-in */
+    .fade-word {
+      opacity: 0;
+      transform: scale(0.9) translateY(10px);
+      animation: fadeScaleIn 0.8s forwards;
     }
 
     .iso { font-size: clamp(3rem, 10vw, 4.5rem); letter-spacing: 0.1em; }
@@ -85,25 +93,18 @@
       <span class="letter" style="animation-delay:0.6s">O</span>
     </h1>
 
-    <h1 class="transport">
-      <span class="letter" style="animation-delay:1s">T</span>
-      <span class="letter" style="animation-delay:1.2s">R</span>
-      <span class="letter" style="animation-delay:1.4s">A</span>
-      <span class="letter" style="animation-delay:1.6s">N</span>
-      <span class="letter" style="animation-delay:1.8s">S</span>
-      <span class="letter" style="animation-delay:2s">P</span>
-      <span class="letter" style="animation-delay:2.2s">O</span>
-      <span class="letter" style="animation-delay:2.4s">R</span>
-      <span class="letter" style="animation-delay:2.6s">T</span>
+    <h1 class="transport fade-word" style="animation-delay:1s">
+      TRANSPORT
     </h1>
 
     <footer>
-      <a href="mailto:raimo@ispo.ee" style="animation-delay:5s">raimo@ispo.ee</a>
-      <a href="tel:+37256273053" style="animation-delay:5.2s">+372 5627 3053</a>
+      <a href="mailto:raimo@ispo.ee" style="animation-delay:4s">raimo@ispo.ee</a>
+      <a href="tel:+37256273053" style="animation-delay:4.2s">+372 5627 3053</a>
     </footer>
   </main>
 
   <script>
+    // Footer animatsioon
     const footerLinks = document.querySelectorAll('footer a');
     footerLinks.forEach(link => {
       const delay = link.style.animationDelay || '0s';
