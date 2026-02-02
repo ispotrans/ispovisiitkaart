@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <title>ISPO TRANSPORT</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <!-- Google Font: Poppins -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700;900&display=swap" rel="stylesheet">
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -17,6 +16,7 @@
       font-family: 'Poppins', sans-serif;
       color: #fff;
       text-align: center;
+      overflow-x: hidden; /* ära lase horisontaalselt kerida */
     }
 
     .card {
@@ -24,18 +24,18 @@
       flex-direction: column;
       align-items: center;
       padding: 2rem 1rem;
-      max-width: 90vw; /* Mobiilivaade */
+      max-width: 90vw;
     }
 
     h1 {
       display: flex;
-      flex-direction: column;
-      align-items: center;
+      justify-content: center;
+      white-space: nowrap; /* ära murra tähti uuele reale */
       line-height: 1;
       font-weight: 900;
+      margin-bottom: 0.2em;
     }
 
-    /* Tähe-animatsioon */
     .letter {
       display: inline-block;
       opacity: 0;
@@ -47,25 +47,15 @@
       to { opacity: 1; transform: scale(1) translateY(0); }
     }
 
-    .iso {
-      font-size: clamp(3rem, 10vw, 4.5rem);
-      letter-spacing: 0.1em;
-    }
-
-    .transport {
-      font-size: clamp(1.2rem, 5vw, 1.5rem);
-      margin-top: 0.15em;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-    }
+    .iso { font-size: clamp(3rem, 10vw, 4.5rem); letter-spacing: 0.1em; }
+    .transport { font-size: clamp(1.2rem, 5vw, 1.5rem); letter-spacing: 0.08em; margin-bottom: 1rem; }
 
     footer {
-      margin-top: 3rem;
-      font-size: 0.95rem;
-      opacity: 0.85;
       display: flex;
       flex-direction: column;
       align-items: center;
+      font-size: 0.95rem;
+      opacity: 0.85;
     }
 
     footer a {
@@ -78,23 +68,17 @@
       animation: fadeScaleIn 0.6s forwards;
     }
 
-    footer a:hover {
-      color: #ddd;
-      transform: translateY(-2px);
-    }
+    footer a:hover { color: #ddd; transform: translateY(-2px); }
 
-    /* Mobiil-optimeerimine */
     @media (max-width: 480px) {
       .iso { font-size: clamp(2.2rem, 12vw, 3.2rem); }
       .transport { font-size: clamp(1rem, 6vw, 1.2rem); }
     }
-
   </style>
 </head>
 <body>
   <main class="card">
     <h1 class="iso">
-      <!-- ISPO tähehaaval fade-in -->
       <span class="letter" style="animation-delay:0s">I</span>
       <span class="letter" style="animation-delay:0.2s">S</span>
       <span class="letter" style="animation-delay:0.4s">P</span>
@@ -102,7 +86,6 @@
     </h1>
 
     <h1 class="transport">
-      <!-- TRANSPORT tähehaaval fade-in -->
       <span class="letter" style="animation-delay:1s">T</span>
       <span class="letter" style="animation-delay:1.2s">R</span>
       <span class="letter" style="animation-delay:1.4s">A</span>
@@ -121,7 +104,6 @@
   </main>
 
   <script>
-    // Footer animatsioon
     const footerLinks = document.querySelectorAll('footer a');
     footerLinks.forEach(link => {
       const delay = link.style.animationDelay || '0s';
