@@ -98,7 +98,14 @@
     </h1>
 
     <footer>
-      <a href="mailto:raimo@ispo.ee" style="animation-delay:4s">raimo@ispo.ee</a>
+      <a href="#" id="email-link">Saada e-kiri</a>
+<script>
+  const user = "raimo";
+  const domain = "ispo.ee";
+  const emailLink = document.getElementById("email-link");
+  emailLink.href = `mailto:${user}@${domain}`;
+  emailLink.textContent = `${user}@${domain}`;
+</script>
       <a href="tel:+37256273053" style="animation-delay:4.2s">+372 5627 3053</a>
     </footer>
   </main>
