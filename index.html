@@ -5,9 +5,8 @@
   <title>ISPO TRANSPORT</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <!-- Google Font: Poppins -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700;900&display=swap" rel="stylesheet">
   <style>
-    /* -------------------- Reset & font -------------------- */
     * {
       box-sizing: border-box;
       margin: 0;
@@ -19,47 +18,69 @@
       display: grid;
       place-items: center;
       background-color: #000;
+      font-family: 'Poppins', sans-serif;
       color: #fff;
-      font-family: 'Poppins', 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
       text-align: center;
-      opacity: 0;            
-      animation: fadeIn 1.2s ease-in forwards;
-    }
-
-    @keyframes fadeIn {
-      to { opacity: 1; }
     }
 
     .card {
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 3rem 2.5rem;
+      padding: 2rem 1.5rem;
     }
 
-    /* -------------------- Title -------------------- */
+    /* -------------------- Fade-in + scale animatsioon -------------------- */
+    .fade {
+      opacity: 0;
+      transform: scale(0.9);
+      animation-fill-mode: forwards;
+    }
+
+    .fade-ispo {
+      animation: fadeScaleIn 1s ease forwards;
+      animation-delay: 0s;
+    }
+
+    .fade-transport {
+      animation: fadeScaleIn 1s ease forwards;
+      animation-delay: 1s;
+    }
+
+    .fade-footer {
+      animation: fadeScaleIn 1s ease forwards;
+      animation-delay: 4s; /* 1s TRANSPORT + 3s hiljem */
+    }
+
+    @keyframes fadeScaleIn {
+      0% { opacity: 0; transform: scale(0.9) translateY(10px); }
+      100% { opacity: 1; transform: scale(1) translateY(0); }
+    }
+
+    /* -------------------- Pealkirjad -------------------- */
     h1 {
       display: flex;
       flex-direction: column;
       align-items: center;
+      line-height: 1;
       font-weight: 900;
       text-align: center;
     }
 
-    /* Wrapper, et mõlemad read oleksid sama laiusega */
+    /* Mõlemad read sama laiusega */
     .line {
       display: inline-block;
-      width: 16ch;  /* mõlemal real sama laiusega */
+      width: 16ch;
       text-align: center;
       letter-spacing: 0.15em;
     }
 
     .iso {
-      font-size: clamp(3rem, 8vw, 4.5rem);
+      font-size: clamp(3rem, 10vw, 4.5rem);
     }
 
     .transport {
-      font-size: clamp(1.2rem, 3vw, 1.5rem);
+      font-size: clamp(1.2rem, 5vw, 1.5rem);
       margin-top: 0.15em;
       font-weight: 700;
     }
@@ -84,16 +105,29 @@
       transform: translateY(-2px);
     }
 
+    /* -------------------- Mobiiloptimeerimine -------------------- */
+    @media (max-width: 480px) {
+      .iso {
+        font-size: clamp(2.5rem, 12vw, 3.5rem);
+      }
+      .transport {
+        font-size: clamp(1rem, 5vw, 1.2rem);
+      }
+      .card {
+        padding: 1.5rem 1rem;
+      }
+    }
+
   </style>
 </head>
 <body>
   <main class="card">
     <h1>
-      <span class="line iso">ISPO</span>
-      <span class="line transport">TRANSPORT</span>
+      <span class="fade fade-ispo line iso">ISPO</span>
+      <span class="fade fade-transport line transport">TRANSPORT</span>
     </h1>
 
-    <footer>
+    <footer class="fade fade-footer">
       <a href="mailto:raimo@ispo.ee">raimo@ispo.ee</a>
       <a href="tel:+37256273053">+372 5627 3053</a>
     </footer>
